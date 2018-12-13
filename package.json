@@ -4,7 +4,7 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "test": "node .",
+    "test": "node ."
   },
   "keywords": [],
   "author": "MoonlightCapital",
