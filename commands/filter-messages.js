@@ -5,7 +5,8 @@ const webhook = new WebhookClient(moveHook.id, moveHook.token, {disableEveryone:
 exports.run = async (client, message) => {
   if(!message.guild) return
 
-  if(message.channel.topic && !message.channel.topic.includes('{deletemessages}')) return
+  if(!message.channel.topic) return
+  if(!message.channel.topic.includes('{deletemessages}')) return
   if(!message.channel.permissionsFor(message.guild.me).has('MANAGE_MESSAGES')) return
 
   if(moveHook.id && moveHook.token)
