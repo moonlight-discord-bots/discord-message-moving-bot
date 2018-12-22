@@ -1,5 +1,5 @@
 const {moveHook} = require('../config')
-const {WebhookClient} = require('discord.js')
+const {WebhookClient, Message} = require('discord.js')
 const webhook = new WebhookClient(moveHook.id, moveHook.token, {disableEveryone: true})
 
 exports.run = async (client, message) => {
@@ -10,7 +10,7 @@ exports.run = async (client, message) => {
   if(!message.channel.permissionsFor(message.guild.me).has('MANAGE_MESSAGES')) return
 
   if(moveHook.id && moveHook.token)
-   webhook.send(message.content, {username: message.author.username, avatarURL: message.author.displayAvatarURL})
+   webhook.send(message.content || '*No content, message probably contained an image*', {username: message.author.username, avatarURL: message.author.displayAvatarURL})
 
   message.delete('Message sent in a channel where messages instantly disappear')
 
